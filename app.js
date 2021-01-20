@@ -55,7 +55,9 @@ app.listen(3000, function(){
 const express = require( 'express' );
 const morgan = require('morgan'); //middleware application logger
 const nunjucks = require( 'nunjucks' );
-
+/* const bank = require( './tweetBank' ); */
+const routes = require('./routes');
+app.use('/', routes);
 const app = express(); // crea una instancia de una aplicación de express
 
 // Configurando Nunjucks
@@ -73,14 +75,16 @@ let tweetsDeEjemplo = [
     { id: 3, name: "pepe", content: "este es un tweeettt de pepe" },
 ];
 
-app.get('/', function (req, res) {
+/* app.get('/', function (req, res) {
     res.render( 'index', { tweets: tweetsDeEjemplo });
-});
+}); */
 
 /* app.get('/stylesheets/style.css', function (req, res) {
     res.sendFile(__dirname+"/public/stylesheets/style.css")
 })
- */
+*/
+
+
 app.listen(3000, function(){
     console.log('Estas escuhando en el puerto 3000')
 });
