@@ -56,9 +56,9 @@ const express = require( 'express' );
 const morgan = require('morgan'); //middleware application logger
 const nunjucks = require( 'nunjucks' );
 const bank = require( './tweetBank' );
-/* const routes = require('./routes');
-app.use('/', routes); */
+const routes = require('./routes');
 const app = express(); // crea una instancia de una aplicación de express
+app.use('/', routes);
 
 // Configurando Nunjucks
 app.set('view engine', 'html'); // hace que res.render funcione con archivos html
@@ -79,10 +79,10 @@ app.get('/', function (req, res) {
     res.render( 'index', { tweets: tweetsDeEjemplo });
 }); 
 
-/* app.get('/stylesheets/style.css', function (req, res) {
+app.get('/stylesheets/style.css', function (req, res) {
     res.sendFile(__dirname+"/public/stylesheets/style.css")
-})
-*/
+}) 
+
 
 
 app.listen(3000, function(){
