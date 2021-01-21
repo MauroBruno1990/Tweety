@@ -8,10 +8,11 @@ router.get('/', function (req, res) {
   res.render( 'index', { tweets: tweets } );
 });
 
-router.get('/users', function (req, res) {
-  let tweets = tweetBank.find();
-  console.log("entre a users")
-  res.render( 'index', { tweets: tweets } );
+// digamos que el cliente pide un GET a /users/guille
+router.get( '/users/:name', function (req, res) {
+  let name = req.params.name;  // --> 'guille'
+  let tweet = tweetBank.find({name:name});
+  res.render( 'index', { tweets: tweet } );
 });
 
 module.exports = router;
